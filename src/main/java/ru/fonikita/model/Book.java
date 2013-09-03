@@ -41,25 +41,9 @@ public class Book {
 	      return aut;
 	   }
 	   
-	   @Override
-		public String toString() {
-			return "Book [id=" + book_id + ", title=" + title + ", hashCode()="
-					+ hashCode() + "]";
-		}
+	 
+	
 		
-		@Override
-		public int hashCode() {
-			// TODO Auto-generated method stub
-			return this.book_id;
-		}
-		
-		@Override
-		public boolean equals(Object obj) {
-			if (obj instanceof Book) {
-				if(this.book_id == ((Book)obj).book_id)
-					return true;
-			}
-			return false;
-		}   
+
 	   
 }
