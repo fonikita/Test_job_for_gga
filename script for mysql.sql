@@ -52,3 +52,5 @@ call ins_proc("Animal Farm","Animal Farm is an allegorical and dystopian novel b
 call ins_proc("Alice's Adventures in Wonderland","Alice's Adventures in Wonderland (commonly shortened to Alice in Wonderland) is an 1865 novel. Written by English author Charles Lutwidge Dodgson under the pseudonym Lewis Carroll.","Lewis Carroll");
 
 
+select * from books
+

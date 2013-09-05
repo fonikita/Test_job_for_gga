@@ -1,9 +1,12 @@
 package ru.fonikita.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 
+
+@XmlType(propOrder = { "book_id", "title","abst", "aut" })
 @XmlRootElement
 @JsonAutoDetect
 public class Book {
