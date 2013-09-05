@@ -32,6 +32,15 @@ public class BookService {
 		return bookJDBCTemplate.getBook(book_id);
 	}
 	
+	
+	@RequestMapping( method = RequestMethod.GET, headers = "Accept=application/xml, application/json", produces = {
+			"application/json", "application/xml" })
+	@ResponseBody
+	public List<Book> getBooks() {
+		return bookJDBCTemplate.listBooks();
+	}
+	
+	
 
 	@RequestMapping( method = RequestMethod.PUT, headers = "Accept=application/xml, application/json", produces = {
 			"application/json", "application/xml" }, consumes = {
@@ -57,6 +66,14 @@ public class BookService {
 	public Number createBook(@RequestBody Book book) {
 	bookJDBCTemplate.create(book.getTitle(), book.getAbst(), book.getAut());
 		return null;
+	}
+	
+	
+	@RequestMapping(value = "/get_book_by_author/{book_aut_str}", method = RequestMethod.GET, headers = "Accept=application/xml, application/json", produces = {
+			"application/json", "application/xml" })
+	@ResponseBody
+	public List<Book> getBooksByAut(@PathVariable String book_aut_str) {
+		return bookJDBCTemplate.listBooksAut(book_aut_str);
 	}
 
 }

@@ -1,7 +1,9 @@
 package ru.fonikita.model;
 
 import java.util.List;
+
 import javax.sql.DataSource;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 
@@ -25,14 +27,25 @@ public class BookJDBCTemplate implements BookDAO {
                         new Object[]{book_id}, new BookMapper());
       return book;
    }
+   
+  
 
    public List<Book> listBooks() {
       String SQL = "select b.*,a.aut_name from books b left outer join book_aut ba on b.book_id=ba.book_book_id left outer join author a on ba.aut_aut_id=a.aut_id";
       List <Book> book = jdbcTemplateObject.query(SQL, 
                                 new BookMapper());
       return book;
+      
    }
-
+   
+   public List<Book> listBooksAut(String book_aut) {
+	      String SQL = "select b.*,a.aut_name from books b left outer join book_aut ba on b.book_id=ba.book_book_id left outer join author a on ba.aut_aut_id=a.aut_id where aut_name like"+"'%"+ book_aut+"%'";
+	       List <Book> book = jdbcTemplateObject.query(SQL, 
+                   new BookMapper());
+   return book;
+   
+}
+   
    public void delete(Integer book_id){
       String SQL = "delete from Books where book_id = ?";
       jdbcTemplateObject.update(SQL, book_id);
